@@ -1,0 +1,190 @@
+{
+  "info": {
+    "_postman_id": "music-api-collection",
+    "name": "Music API",
+    "description": "Complete REST API for music albums and artists management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Environment Setup",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Albums",
+      "item": [
+        {
+          "name": "GET All Albums",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/albums",
+              "host": ["{{baseUrl}}"],
+              "path": ["albums"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Album by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/albums?albumId=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["albums"],
+              "query": [
+                {
+                  "key": "albumId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Albums by Artist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/albums/The Beatles",
+              "host": ["{{baseUrl}}"],
+              "path": ["albums", "The Beatles"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Search Albums by Artist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/albums/search/artist/Beat",
+              "host": ["{{baseUrl}}"],
+              "path": ["albums", "search", "artist", "Beat"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Search Albums by Description",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/albums/search/description/rock",
+              "host": ["{{baseUrl}}"],
+              "path": ["albums", "search", "description", "rock"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Create Album",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Demon Days\",\n    \"artist\": \"Gorillaz\",\n    \"description\": \"Second studio album by British virtual band Gorillaz\",\n    \"year\": 2005,\n    \"image\": \"https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Demon_Days_%28Official_Cover_Art%29.png/220px-Demon_Days_%28Official_Cover_Art%29.png\",\n    \"tracks\": [\n        {\n            \"title\": \"Intro\",\n            \"number\": 1,\n            \"video\": \"https://www.youtube.com/watch?v=1V_xRb0x9aw\",\n            \"lyrics\": \"It's coming up, it's coming up, it's coming up...\"\n        },\n        {\n            \"title\": \"Last Living Souls\",\n            \"number\": 2,\n            \"video\": \"https://www.youtube.com/watch?v=uAOR6ib95kQ\",\n            \"lyrics\": \"Look, it's coming up, it's dare\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/albums",
+              "host": ["{{baseUrl}}"],
+              "path": ["albums"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Update Album",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"albumId\": 1,\n    \"title\": \"Updated Album Title\",\n    \"artist\": \"Updated Artist Name\",\n    \"description\": \"This album has been updated via PUT request\",\n    \"year\": 2024,\n    \"image\": \"https://example.com/updated-image.jpg\",\n    \"tracks\": [\n        {\n            \"trackId\": 1,\n            \"title\": \"Updated Track Title\",\n            \"number\": 1,\n            \"video\": \"https://youtube.com/updated-video\",\n            \"lyrics\": \"Updated lyrics for this track\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/albums",
+              "host": ["{{baseUrl}}"],
+              "path": ["albums"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Album",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/albums/10",
+              "host": ["{{baseUrl}}"],
+              "path": ["albums", "10"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Artists",
+      "item": [
+        {
+          "name": "GET All Artists",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/artists",
+              "host": ["{{baseUrl}}"],
+              "path": ["artists"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    }
+  ]
+}
